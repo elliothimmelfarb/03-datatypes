@@ -11,3 +11,19 @@ library
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
   ghc-options:         -Wall
+
+test-suite datatypes-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  other-modules:       DatatypesSpec
+                     , TablesSpec
+                     , TransactionsSpec
+  build-depends:       base >= 4.7 && < 5
+                     , hspec
+                     , datatypes
+                     , QuickCheck
+  build-tool-depends:  hspec-discover:hspec-discover
+  default-language:    Haskell2010
+  ghc-options: -Wall
