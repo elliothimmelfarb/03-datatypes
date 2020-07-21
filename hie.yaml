@@ -3,4 +3,6 @@ cradle:
     - path: "./src"
       component: "lib:datatypes"
     - path: "./test"
-      component: "test:datatypes-test"
+      component: "test:datatypes-tests"
+    - path: "./doctest"
+      component: "test:datatypes-doctests"

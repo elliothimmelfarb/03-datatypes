@@ -19,6 +19,12 @@ import Control.Applicative ((<|>), liftA2)
 -- Try to make the definition as lazy as possible.
 -- Do not use other functions.
 
+-- |
+-- >>> implies False False
+-- True
+-- >>> implies True False
+-- False
+--
 implies :: Bool -> Bool -> Bool
 implies = error "TODO: define implies"
 
@@ -34,6 +40,12 @@ implies' = error "TODO: define implies'"
 --
 -- Reimplement 'orelse' from the slides.
 
+-- |
+-- >>> Nothing `orelse` Just 'x'
+-- Just 'x'
+-- >>> Just 2 `orelse` Just 3
+-- Just 2
+--
 orelse :: Maybe a -> Maybe a -> Maybe a
 orelse = error "TODO: define orelse"
 
@@ -41,6 +53,10 @@ orelse = error "TODO: define orelse"
 --
 -- Reimplement 'mapMaybe' from the slides.
 
+-- |
+-- >>> mapMaybe (+ 2) (Just 6)
+-- Just 8
+--
 mapMaybe :: (a -> b) -> Maybe a -> Maybe b
 mapMaybe = error "TODO: define mapMaybe"
 
@@ -69,6 +85,13 @@ mapMaybe = error "TODO: define mapMaybe"
 --
 -- Define the function without using other functions.
 
+-- |
+-- >>> pairMaybe (Just 'x') (Just 'y')
+-- Just ('x','y')
+--
+-- >>> pairMaybe (Just 42) Nothing
+-- Nothing
+--
 pairMaybe :: Maybe a -> Maybe b -> Maybe (a, b)
 pairMaybe = error "TODO: define pairMaybe"
 
@@ -76,6 +99,13 @@ pairMaybe = error "TODO: define pairMaybe"
 --
 -- Reimplement the function 'liftMaybe' from the slides.
 
+-- |
+-- >>> liftMaybe (+) (Just 2) (Just 3)
+-- Just 5
+--
+-- >>> liftMaybe (*) (Just 7) Nothing
+-- Nothing
+--
 liftMaybe :: (a -> b -> c) -> Maybe a -> Maybe b -> Maybe c
 liftMaybe = error "TODO: define liftMaybe"
 
@@ -91,6 +121,13 @@ pairMaybe' = error "TODO: define pairMaybe'"
 -- Reimplement 'addMaybes' from the slides, but
 -- by using 'liftMaybe'.
 
+-- |
+-- >>> addMaybes (Just 7) (Just 3)
+-- Just 10
+--
+-- >>> addMaybes Nothing (Just 0)
+-- Nothing
+--
 addMaybes :: Maybe Int -> Maybe Int -> Maybe Int
 addMaybes = error "TODO: define addMaybes"
 
@@ -127,6 +164,10 @@ addMaybes' = error "TODO: define addMaybes'"
 -- functions to the given value and returns the
 -- results as a pair.
 
+-- |
+-- >>> split (+ 1) (* 2) 7
+-- (8,14)
+--
 split :: (a -> b) -> (a -> c) -> a -> (b, c)
 split = error "TODO: define split"
 
@@ -134,6 +175,13 @@ split = error "TODO: define split"
 --
 -- Reimplement '++' from the slides.
 
+-- |
+-- >>> [1,2] ++ [9,10]
+-- [1,2,9,10]
+--
+-- >>> "Mongolia" ++ "Haskell"
+-- "MongoliaHaskell"
+--
 (++) :: [a] -> [a] -> [a]
 (++) = error "TODO: define (++)"
 
@@ -143,6 +191,13 @@ split = error "TODO: define split"
 -- a least one element in the given list of 'Bool's
 -- is 'True'.
 
+-- |
+-- >>> or []
+-- False
+--
+-- >>> or [False,True,False]
+-- True
+--
 or :: [Bool] -> Bool
 or = error "TODO: define or"
 
@@ -164,6 +219,10 @@ reverse = error "TODO: define reverse"
 -- pattern on lists.
 --
 
+-- |
+-- >>> reverseAcc "Mongolia" "Haskell"
+-- "lleksaHMongolia"
+--
 reverseAcc :: [a] -> [a] -> [a]
 reverseAcc = error "TODO: define reverseAcc"
 
@@ -196,6 +255,10 @@ reverse' = reverseAcc []
 --
 -- Reimplement 'filter' from the slides.
 
+-- |
+-- >>> filter even [1 .. 7]
+-- [2,4,6]
+--
 filter :: (a -> Bool) -> [a] -> [a]
 filter = error "TODO: define filter"
 
@@ -210,6 +273,10 @@ filter = error "TODO: define filter"
 -- Use 'mod', 'filter', and the '[1 .. n]' construction
 -- to compute all the divisors of a given integer.
 
+-- |
+-- >>> divisors 24
+-- [1,2,3,4,6,8,12,24]
+--
 divisors :: Integral a => a -> [a]
 divisors = error "TODO: define divisors"
 
@@ -235,6 +302,19 @@ divisors = error "TODO: define divisors"
 -- its divisors are just 1 and the number itself.
 -- Implement this check.
 
+-- |
+-- >>> isPrime 2
+-- True
+--
+-- >>> isPrime 1
+-- False
+--
+-- >>> isPrime 24
+-- False
+--
+-- >>> isPrime 101
+-- True
+--
 isPrime :: Integral a => a -> Bool
 isPrime = error "TODO: define isPrime"
 
@@ -250,6 +330,13 @@ isPrime = error "TODO: define isPrime"
 --
 -- Compute the first 1000 prime numbers.
 
+-- |
+-- >>> length thousandPrimes
+-- 1000
+--
+-- >>> all isPrime thousandPrimes
+-- True
+--
 thousandPrimes :: [Int]
 thousandPrimes = error "TODO: define thousandPrimes"
 
@@ -283,6 +370,10 @@ tree4 = Node tree2 tree3
 --
 -- Re-implement 'height' from the slides.
 
+-- |
+-- >>> map height [tree1, tree2, tree3, tree4]
+-- [0,1,2,3]
+--
 height :: Tree a -> Int
 height = error "TODO: implement height"
 
@@ -294,6 +385,10 @@ height = error "TODO: implement height"
 -- in the new tree have been transformed by
 -- the function.
 
+-- |
+-- >>> mapTree (+ 1) tree2
+-- Node (Leaf 3) (Leaf 5)
+--
 mapTree :: (a -> b) -> Tree a -> Tree b
 mapTree = error "TODO: implement mapTree"
 
@@ -303,6 +398,13 @@ mapTree = error "TODO: implement mapTree"
 -- shape. Implement this directly, without
 -- using other functions.
 
+-- |
+-- sameShape tree1 tree2
+-- False
+--
+-- sameShape tree3 (mapTree (* 10) tree3)
+-- True
+--
 sameShape :: Tree a -> Tree b -> Bool
 sameShape = error "TODO: implement sameShape'"
 
@@ -334,6 +436,13 @@ sameShape' = error "TODO: implement sameShape'"
 -- If the given integer is zero or negative,
 -- return just a single leaf.
 
+-- |
+-- >>> buildTree (-17)
+-- Leaf ()
+--
+-- >>> buildTree 2
+-- Node (Node (Leaf ()) (Leaf ())) (Node (Leaf ()) (Leaf ()))
+--
 buildTree :: Int -> Tree ()
 buildTree = error "TODO: implement buildTree"
 
@@ -344,6 +453,10 @@ buildTree = error "TODO: implement buildTree"
 -- by replacing each leaf with the tree
 -- contained in that leaf.
 
+-- |
+-- >>> graft (Node (Leaf (Leaf 'x')) (Leaf (Node (Leaf 'y') (Leaf 'z'))))
+-- Node (Leaf 'x') (Node (Leaf 'y') (Leaf 'z'))
+--
 graft :: Tree (Tree a) -> Tree a
 graft = error "TODO: implement graft"
 
@@ -388,6 +501,10 @@ prop_eval2 = eval expr2 == 0
 -- an expression that subtracts one expression
 -- from another.
 
+-- |
+-- >>> sub (Lit 42) (Lit 2)
+-- Add (Lit 42) (Neg (Lit 2))
+--
 sub :: Expr -> Expr -> Expr
 sub = error "TODO: implement sub"
 
@@ -397,6 +514,13 @@ sub = error "TODO: implement sub"
 -- of operations in an expression. All of 'Add',
 -- 'Neg', and 'IfZero' count as one operation.
 
+-- |
+-- >>> countOps (Lit 3)
+-- 0
+--
+-- >>> countOps (Add (Lit 7) (Neg (Lit 5)))
+-- 2
+--
 countOps :: Expr -> Int
 countOps = error "TODO: implement countOps"
 
@@ -420,4 +544,3 @@ countOps = error "TODO: implement countOps"
 -- Add a constructor 'Mul' for multiplication to
 -- the expression language and adapt all functions
 -- accordingly.
-

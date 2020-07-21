@@ -1,5 +1,6 @@
 module Transactions where
 
+import Prelude hiding (lookup)
 import Tables
 
 -- START HERE AFTER Tables.hs
@@ -42,6 +43,10 @@ transaction2 =
 -- Flip a transaction, by producing a transaction of
 -- the negative amount in the opposite direction.
 
+-- |
+-- >>> flipTransaction transaction1
+-- Transaction {trAmount = -10, trFrom = "Lars", trTo = "Andres"}
+--
 flipTransaction :: Transaction -> Transaction
 flipTransaction = error "TODO: implement flipTransaction"
 
@@ -61,7 +66,21 @@ normalizeTransaction = error "TODO: impement normalizeTransaction"
 
 type Accounts = Table Account Amount
 
-processTransaction :: Transaction -> Accounts
+-- |
+-- >>> let a = processTransaction transaction1 $ insert "Andres" 30 empty
+-- >>> lookup "Andres" a
+-- Just 20
+-- >>> lookup "Lars" a
+-- Just 10
+-- >>> lookup "Alejandro" a
+-- Nothing
+-- >>> let b = processTransaction transaction2 a
+-- >>> lookup "Lars" b
+-- Just 3
+-- >>> lookup "Alejandro" b
+-- Just 7
+--
+processTransaction :: Transaction -> Accounts -> Accounts
 processTransaction = error "TODO: implement processTransaction"
 
 -- Task Transactions-4.
@@ -75,6 +94,15 @@ processTransaction = error "TODO: implement processTransaction"
 --
 -- Process a list of transactions one by one.
 
+-- |
+-- >>> let a = processTransactions [transaction1, transaction2] empty
+-- >>> lookup "Andres" a
+-- Just (-10)
+-- >>> lookup "Lars" a
+-- Just 3
+-- >>> lookup "Alejandro" a
+-- Just 7
+--
 processTransactions :: [Transaction] -> Accounts -> Accounts
 processTransactions = error "TODO: implement processTransactions"
 
@@ -83,6 +111,16 @@ processTransactions = error "TODO: implement processTransactions"
 -- Write a version of 'processTransaction' that fails
 -- if and only if the new balances would be negative.
 
+-- |
+-- >>> let Just a = processTransaction' transaction1 $ insert "Andres" 30 empty
+-- >>> lookup "Andres" a
+-- Just 20
+-- >>> lookup "Lars" a
+-- Just 10
+--
+-- >>> processTransaction' transaction1 empty
+-- Nothing
+--
 processTransaction' :: Transaction -> Accounts -> Maybe Accounts
 processTransaction' = error "TODO: implement processTransaction'"
 
@@ -91,6 +129,18 @@ processTransaction' = error "TODO: implement processTransaction'"
 -- Write a versionof 'processTransactions' that fails
 -- if any of the individual transactions fail.
 
+-- |
+-- >>> let Just a = processTransactions' [transaction1, transaction2] $ insert "Andres" 50 empty
+-- >>> lookup "Andres" a
+-- Just 40
+-- >>> lookup "Lars" a
+-- Just 3
+-- >>> lookup "Alejandro" a
+-- Just 7
+--
+-- >>> processTransactions' [transaction1, transaction2] empty
+-- Nothing
+--
 processTransactions' :: [Transaction] -> Accounts -> Maybe Accounts
 processTransactions' = error "TODO: implement processTransactions'"
 
