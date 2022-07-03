@@ -119,7 +119,7 @@ liftMaybe f (Just a) (Just b) = Just (f a b)
 -- Reimplement 'pairMaybe' using 'liftMaybe'.
 
 pairMaybe' :: Maybe a -> Maybe b -> Maybe (a, b)
-pairMaybe' = error "TODO: define pairMaybe'"
+pairMaybe' = liftMaybe (,)
 
 -- Task Datatypes-10.
 --
