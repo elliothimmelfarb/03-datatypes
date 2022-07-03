@@ -36,7 +36,7 @@ implies _ _ = True
 -- of 'not' and '||', both of which are predefined.
 
 implies' :: Bool -> Bool -> Bool
-implies' = error "TODO: define implies'"
+implies' a b = not (a) || b 
 
 -- Task Datatypes-3.
 --
