@@ -36,7 +36,7 @@ implies _ _ = True
 -- of 'not' and '||', both of which are predefined.
 
 implies' :: Bool -> Bool -> Bool
-implies' a b = not (a) || b 
+implies' a b = not a || b
 
 -- Task Datatypes-3.
 --
@@ -48,6 +48,7 @@ implies' a b = not (a) || b
 -- >>> Just 2 `orelse` Just 3
 -- Just 2
 orelse :: Maybe a -> Maybe a -> Maybe a
+orelse Nothing Nothing = Nothing
 orelse Nothing (Just a) = Just a
 orelse (Just a) _ = Just a
 
@@ -60,7 +61,7 @@ orelse (Just a) _ = Just a
 -- Just 8
 mapMaybe :: (a -> b) -> Maybe a -> Maybe b
 mapMaybe _ Nothing = Nothing
-mapMaybe f (Just a) = Just(f a) 
+mapMaybe f (Just a) = Just (f a)
 
 -- Task Datatypes-5.
 --
