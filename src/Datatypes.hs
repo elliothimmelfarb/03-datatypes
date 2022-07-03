@@ -110,7 +110,9 @@ pairMaybe (Just a) (Just b) = Just (a, b)
 -- >>> liftMaybe (*) (Just 7) Nothing
 -- Nothing
 liftMaybe :: (a -> b -> c) -> Maybe a -> Maybe b -> Maybe c
-liftMaybe = error "TODO: define liftMaybe"
+liftMaybe f Nothing _ = Nothing
+liftMaybe f _ Nothing = Nothing
+liftMaybe f (Just a) (Just b) = Just (f a b)
 
 -- Task Datatypes-9.
 --
