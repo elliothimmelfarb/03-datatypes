@@ -48,7 +48,8 @@ implies' a b = not (a) || b
 -- >>> Just 2 `orelse` Just 3
 -- Just 2
 orelse :: Maybe a -> Maybe a -> Maybe a
-orelse = error "TODO: define orelse"
+orelse Nothing (Just a) = Just a
+orelse (Just a) _ = Just a
 
 -- Task Datatypes-4.
 --
