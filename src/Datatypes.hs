@@ -95,7 +95,9 @@ mapMaybe f (Just a) = Just (f a)
 -- >>> pairMaybe (Just 42) Nothing
 -- Nothing
 pairMaybe :: Maybe a -> Maybe b -> Maybe (a, b)
-pairMaybe = error "TODO: define pairMaybe"
+pairMaybe Nothing _ = Nothing
+pairMaybe _ Nothing = Nothing
+pairMaybe (Just a) (Just b) = Just (a, b)
 
 -- Task Datatypes-8.
 --
