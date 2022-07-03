@@ -59,7 +59,8 @@ orelse (Just a) _ = Just a
 -- >>> mapMaybe (+ 2) (Just 6)
 -- Just 8
 mapMaybe :: (a -> b) -> Maybe a -> Maybe b
-mapMaybe = error "TODO: define mapMaybe"
+mapMaybe _ Nothing = Nothing
+mapMaybe f (Just a) = Just(f a) 
 
 -- Task Datatypes-5.
 --
