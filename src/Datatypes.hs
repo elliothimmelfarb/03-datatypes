@@ -133,7 +133,9 @@ pairMaybe' = liftMaybe (,)
 -- >>> addMaybes Nothing (Just 0)
 -- Nothing
 addMaybes :: Maybe Int -> Maybe Int -> Maybe Int
-addMaybes = error "TODO: define addMaybes"
+addMaybes Nothing _ = Nothing
+addMaybes _ Nothing = Nothing
+addMaybes (Just a) (Just b) = Just (a + b)
 
 -- Task Datatypes-11.
 --
