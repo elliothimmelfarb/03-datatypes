@@ -154,7 +154,11 @@ addMaybes (Just a) (Just b) = Just (a + b)
 -- 'mapMaybe'.
 
 addMaybes' :: Maybe Int -> Maybe Int -> Maybe Int
-addMaybes' = error "TODO: define addMaybes'"
+addMaybes' Nothing _ = Nothing
+addMaybes' _ Nothing = Nothing
+addMaybes' (Just a) (Just b) = mapMaybe (uncurry (+)) (pairMaybe (Just a) (Just b))
+
+--
 
 -- Task Datatypes-13.
 --
