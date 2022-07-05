@@ -168,6 +168,10 @@ addMaybes' (Just a) (Just b) = mapMaybe (uncurry (+)) (pairMaybe (Just a) (Just 
 -- exactly the same on 'Maybe' as 'liftMaybe'; for
 -- example, by replacing 'liftMaybe' by 'liftA2'
 -- in the definition of the 'addMaybe'.
+addMaybes'' :: Maybe Int -> Maybe Int -> Maybe Int
+addMaybes'' Nothing _ = Nothing
+addMaybes'' _ Nothing = Nothing
+addMaybes'' (Just a) (Just b) = liftA2 (+) (Just a) (Just b)
 
 -- Task Datatypes-14.
 --
