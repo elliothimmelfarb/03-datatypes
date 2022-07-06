@@ -183,7 +183,7 @@ addMaybes'' (Just a) (Just b) = liftA2 (+) (Just a) (Just b)
 -- >>> split (+ 1) (* 2) 7
 -- (8,14)
 split :: (a -> b) -> (a -> c) -> a -> (b, c)
-split = error "TODO: define split"
+split f1 f2 a = (f1 a, f2 a)
 
 -- Task Datatypes-15.
 --
