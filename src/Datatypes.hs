@@ -196,7 +196,8 @@ split f1 f2 a = (f1 a, f2 a)
 -- >>> "Mongolia" ++ "Haskell"
 -- "MongoliaHaskell"
 (++) :: [a] -> [a] -> [a]
-(++) = error "TODO: define (++)"
+(++) [] ys = ys
+(++) (x : xs) ys = x : xs ++ ys
 
 -- Task Datatypes-16.
 --
