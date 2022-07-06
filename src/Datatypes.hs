@@ -212,7 +212,7 @@ split f1 f2 a = (f1 a, f2 a)
 -- >>> or [False,True,False]
 -- True
 or :: [Bool] -> Bool
-or = error "TODO: define or"
+or = foldr (||) False
 
 -- Task Datatypes-17.
 --
