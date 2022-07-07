@@ -219,7 +219,8 @@ or = foldr (||) False
 -- Reimplement the function 'reverse' from the slides.
 
 reverse :: [a] -> [a]
-reverse = error "TODO: define reverse"
+reverse [] = []
+reverse (x : xs) = reverse xs ++ [x]
 
 -- Task Datatypes-18.
 --
