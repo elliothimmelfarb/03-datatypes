@@ -237,7 +237,9 @@ reverse (x : xs) = reverse xs ++ [x]
 -- >>> reverseAcc "Mongolia" "Haskell"
 -- "lleksaHMongolia"
 reverseAcc :: [a] -> [a] -> [a]
-reverseAcc = error "TODO: define reverseAcc"
+reverseAcc [] [] = []
+reverseAcc a [] = a
+reverseAcc xs (y : ys) = reverseAcc (y : xs) ys
 
 -- Task Datatypes-19.
 --
