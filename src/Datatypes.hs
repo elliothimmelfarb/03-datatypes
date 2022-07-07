@@ -274,7 +274,11 @@ reverse' = reverseAcc []
 -- >>> filter even [1 .. 7]
 -- [2,4,6]
 filter :: (a -> Bool) -> [a] -> [a]
-filter = error "TODO: define filter"
+filter f [] = []
+filter f (x : xs) =
+  if f x
+    then x : filter f xs
+    else filter f xs
 
 -- Task Datatypes-22.
 --
