@@ -295,7 +295,7 @@ filter f (x : xs) =
 -- >>> divisors 24
 -- [1,2,3,4,6,8,12,24]
 divisors :: Integral a => a -> [a]
-divisors = error "TODO: define divisors"
+divisors n = filter (\num -> n `mod` num == 0) [1 .. n]
 
 -- Task Datatypes-23.
 --
