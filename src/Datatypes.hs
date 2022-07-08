@@ -332,7 +332,9 @@ divisors n = filter (\num -> n `mod` num == 0) [1 .. n]
 -- >>> isPrime 101
 -- True
 isPrime :: Integral a => a -> Bool
-isPrime = error "TODO: define isPrime"
+isPrime n = length ds == 2
+  where
+    ds = divisors n
 
 -- Task Datatypes-25.
 --
