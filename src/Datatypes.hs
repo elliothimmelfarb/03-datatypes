@@ -340,9 +340,13 @@ isPrime n = length ds == 2
 --
 -- What happens if you type in '[1 ..]' into GHCi?
 
+-- Infinite numbers
+
 -- Task Datatypes-26.
 --
 -- Figure out what the pre-defined function 'take' does.
+
+-- takes from a list up to the number
 
 -- Task Datatypes-27.
 --
