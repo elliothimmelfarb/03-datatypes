@@ -16,7 +16,7 @@ newtype Table k v = Table [(k, v)]
 -- Re-implement 'empty'.
 
 empty :: Table k v
-empty = error "TODO: implement empty"
+empty = Table []
 
 -- Task Tables-2.
 --
