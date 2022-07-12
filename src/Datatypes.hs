@@ -359,10 +359,12 @@ isPrime n = length ds == 2
 -- >>> all isPrime thousandPrimes
 -- True
 thousandPrimes :: [Int]
-thousandPrimes = error "TODO: define thousandPrimes"
+thousandPrimes = take 1000 (filter isPrime [1 ..])
 
 -- After computing 'thousandPrimes' in GHCi once, compute
 -- it a second time. What do you observe?
+
+-- holy shit did it cache the result?
 
 -- GO TO Tables.hs
 
