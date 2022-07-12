@@ -30,7 +30,10 @@ insert k v (Table t) = Table ((k, v) : filter (\(k', _) -> k /= k') t)
 -- Re-implement 'delete'.
 
 delete :: Eq k => k -> Table k v -> Table k v
-delete = error "TODO: implement delete"
+delete _ (Table []) = Table []
+delete k (Table ((k', v) : t))
+  | k == k' = delete k (Table t)
+  | otherwise = insert k' v (delete k (Table t))
 
 -- Task Tables-4.
 --
