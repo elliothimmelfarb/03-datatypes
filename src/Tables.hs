@@ -22,8 +22,8 @@ empty = Table []
 --
 -- Re-implement 'insert'.
 
-insert :: k -> v -> Table k v -> Table k v
-insert = error "TODO: implement insert"
+insert :: Eq k => k -> v -> Table k v -> Table k v
+insert k v (Table t) = Table ((k, v) : filter (\(k', _) -> k /= k') t)
 
 -- Task Tables-3.
 --
