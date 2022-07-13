@@ -49,8 +49,9 @@ lookup k (Table ((k', v) : t))
 --
 -- Implement a map function on the table values.
 
-mapValues :: (v1 -> v2) -> Table k v1 -> Table k v2
-mapValues = error "TODO: implement mapValues"
+mapValues :: Eq k => (v1 -> v2) -> Table k v1 -> Table k v2
+mapValues _ (Table []) = Table []
+mapValues f (Table ((k, v) : t)) = insert k (f v) (mapValues f (Table t))
 
 -- Task Tables-6.
 --
