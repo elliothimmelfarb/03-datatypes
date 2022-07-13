@@ -40,7 +40,10 @@ delete k (Table ((k', v) : t))
 -- Re-implement 'lookup'.
 
 lookup :: Eq k => k -> Table k v -> Maybe v
-lookup = error "TODO: implement lookup"
+lookup _ (Table []) = Nothing
+lookup k (Table ((k', v) : t))
+  | k == k' = Just v
+  | otherwise = lookup k (Table t)
 
 -- Task Tables-5.
 --
