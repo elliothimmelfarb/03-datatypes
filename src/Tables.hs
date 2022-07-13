@@ -61,8 +61,9 @@ mapValues f (Table ((k, v) : t)) = insert k (f v) (mapValues f (Table t))
 -- Can you identify a potential problem with
 -- this function?
 
-mapKeys :: (k1 -> k2) -> Table k1 v -> Table k2 v
-mapKeys = error "TODO: implement mapKeys"
+mapKeys :: Eq k1 => Eq k2 => (k1 -> k2) -> Table k1 v -> Table k2 v
+mapKeys _ (Table []) = Table []
+mapKeys f (Table ((k, v) : t)) = insert (f k) v (mapKeys f (Table t))
 
 -- Task Tables-7.
 --
