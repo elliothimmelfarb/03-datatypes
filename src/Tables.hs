@@ -71,7 +71,10 @@ mapKeys f (Table ((k, v) : t)) = insert (f k) v (mapKeys f (Table t))
 -- The function 'alter' takes a function and a key.
 
 alter :: Eq k => (Maybe v -> Maybe v) -> k -> Table k v -> Table k v
-alter = error "TODO: implement alter"
+alter _ _ (Table []) = Table []
+alter f k (Table ((k', v) : t))
+  | k' == k = undefined
+  | otherwise = insert k v (Table t)
 
 -- Task Tables-8.
 --
