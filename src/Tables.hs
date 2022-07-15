@@ -1,4 +1,4 @@
-module Tables where
+module Tables (Table (), empty, insert, delete, lookup, mapValues, mapKeys, alter, alter') where
 
 import Prelude hiding (lookup)
 
