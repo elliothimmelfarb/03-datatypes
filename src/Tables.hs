@@ -79,6 +79,14 @@ alter f k (Table ((k', v) : t)) =
   where
     fv = f v
 
+alter' :: Eq k => (v -> v) -> k -> Table k v -> Table k v
+alter' _ _ (Table []) = Table []
+alter' f k (Table ((k', v) : t))
+  | k == k' = alter f k (insert k fv (Table t))
+  | otherwise = alter f k (insert k v (Table t))
+  where
+    fv = f v
+
 -- Task Tables-8.
 --
 -- Add an export list to the module, exporting
