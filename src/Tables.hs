@@ -1,4 +1,4 @@
-module Tables (Table (), empty, insert, delete, lookup, mapValues, mapKeys, alter, alter') where
+module Tables (Table (), empty, insert, delete, lookup, mapValues, mapKeys, alter) where
 
 import Prelude hiding (lookup)
 
@@ -72,16 +72,7 @@ mapKeys f (Table ((k, v) : t)) = insert (f k) v (mapKeys f (Table t))
 
 alter :: Eq k => (v -> v) -> k -> Table k v -> Table k v
 alter _ _ (Table []) = Table []
-alter f k (Table ((k', v) : t)) =
-  if k == k'
-    then alter f k (insert k fv (Table t))
-    else alter f k (insert k v (Table t))
-  where
-    fv = f v
-
-alter' :: Eq k => (v -> v) -> k -> Table k v -> Table k v
-alter' _ _ (Table []) = Table []
-alter' f k (Table ((k', v) : t))
+alter f k (Table ((k', v) : t))
   | k == k' = alter f k (insert k fv (Table t))
   | otherwise = alter f k (insert k v (Table t))
   where
