@@ -1,22 +1,22 @@
 module Transactions where
 
-import Prelude hiding (lookup)
 import Tables
+import Prelude hiding (lookup)
 
 -- START HERE AFTER Tables.hs
 
 -- This is the transactions datatype from the slides,
 -- using record syntax.
 
-data Transaction =
-  Transaction
-    { trAmount :: Amount
-    , trFrom   :: Account
-    , trTo     :: Account
-    }
+data Transaction = Transaction
+  { trAmount :: Amount,
+    trFrom :: Account,
+    trTo :: Account
+  }
   deriving (Eq, Show)
 
-type Amount  = Int
+type Amount = Int
+
 type Account = String
 
 -- Both declarations below define transactions. The
@@ -33,9 +33,9 @@ transaction1 = Transaction 10 "Andres" "Lars"
 transaction2 :: Transaction
 transaction2 =
   Transaction
-    { trAmount = 7
-    , trFrom   = "Lars"
-    , trTo     = "Philipp"
+    { trAmount = 7,
+      trFrom = "Lars",
+      trTo = "Philipp"
     }
 
 -- Task Transactions-1.
@@ -46,7 +46,6 @@ transaction2 =
 -- |
 -- >>> flipTransaction transaction1
 -- Transaction {trAmount = -10, trFrom = "Lars", trTo = "Andres"}
---
 flipTransaction :: Transaction -> Transaction
 flipTransaction = error "TODO: implement flipTransaction"
 
@@ -79,7 +78,6 @@ type Accounts = Table Account Amount
 -- Just 3
 -- >>> lookup "Alejandro" b
 -- Just 7
---
 processTransaction :: Transaction -> Accounts -> Accounts
 processTransaction = error "TODO: implement processTransaction"
 
@@ -102,7 +100,6 @@ processTransaction = error "TODO: implement processTransaction"
 -- Just 3
 -- >>> lookup "Alejandro" a
 -- Just 7
---
 processTransactions :: [Transaction] -> Accounts -> Accounts
 processTransactions = error "TODO: implement processTransactions"
 
@@ -120,7 +117,6 @@ processTransactions = error "TODO: implement processTransactions"
 --
 -- >>> processTransaction' transaction1 empty
 -- Nothing
---
 processTransaction' :: Transaction -> Accounts -> Maybe Accounts
 processTransaction' = error "TODO: implement processTransaction'"
 
@@ -140,7 +136,6 @@ processTransaction' = error "TODO: implement processTransaction'"
 --
 -- >>> processTransactions' [transaction1, transaction2] empty
 -- Nothing
---
 processTransactions' :: [Transaction] -> Accounts -> Maybe Accounts
 processTransactions' = error "TODO: implement processTransactions'"
 
