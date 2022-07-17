@@ -47,7 +47,8 @@ transaction2 =
 -- >>> flipTransaction transaction1
 -- Transaction {trAmount = -10, trFrom = "Lars", trTo = "Andres"}
 flipTransaction :: Transaction -> Transaction
-flipTransaction Transaction {trAmount = a, trFrom = f, trTo = t} = Transaction {trAmount = - a, trFrom = t, trTo = f}
+flipTransaction Transaction {trAmount = a, trFrom = f, trTo = t} =
+  Transaction {trAmount = - a, trFrom = t, trTo = f}
 
 -- Task Transactions-2.
 --
@@ -55,7 +56,9 @@ flipTransaction Transaction {trAmount = a, trFrom = f, trTo = t} = Transaction {
 -- if the transaction amount is negative.
 
 normalizeTransaction :: Transaction -> Transaction
-normalizeTransaction = error "TODO: impement normalizeTransaction"
+normalizeTransaction t
+  | trAmount t < 0 = flipTransaction t
+  | otherwise = t
 
 -- Task Transactions-3.
 --
