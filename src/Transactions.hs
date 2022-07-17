@@ -47,7 +47,7 @@ transaction2 =
 -- >>> flipTransaction transaction1
 -- Transaction {trAmount = -10, trFrom = "Lars", trTo = "Andres"}
 flipTransaction :: Transaction -> Transaction
-flipTransaction = error "TODO: implement flipTransaction"
+flipTransaction Transaction {trAmount = a, trFrom = f, trTo = t} = Transaction {trAmount = - a, trFrom = t, trTo = f}
 
 -- Task Transactions-2.
 --
