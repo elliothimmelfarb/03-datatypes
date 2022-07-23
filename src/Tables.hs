@@ -30,7 +30,7 @@ insert k v (Table t) = Table $ (k, v) : filter (\(k', _) -> k /= k') t
 -- Re-implement 'delete'.
 
 delete :: Eq k => k -> Table k v -> Table k v
-delete _ (Table []) = Table []
+delete _ (Table []) = empty
 delete k (Table kvs) = Table $ filter (\(k', v) -> k /= k') kvs
 
 -- Task Tables-4.
@@ -60,7 +60,7 @@ mapValues f (Table ((k, v) : t)) = insert k (f v) (mapValues f (Table t))
 -- this function?
 
 mapKeys :: Eq k1 => Eq k2 => (k1 -> k2) -> Table k1 v -> Table k2 v
-mapKeys _ (Table []) = Table []
+mapKeys _ (Table []) = empty
 mapKeys f (Table ((k, v) : t)) = insert (f k) v (mapKeys f (Table t))
 
 -- Task Tables-7.
