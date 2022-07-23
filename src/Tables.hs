@@ -31,9 +31,7 @@ insert k v (Table t) = Table $ (k, v) : filter (\(k', _) -> k /= k') t
 
 delete :: Eq k => k -> Table k v -> Table k v
 delete _ (Table []) = Table []
-delete k (Table ((k', v) : t))
-  | k == k' = delete k (Table t)
-  | otherwise = insert k' v (delete k (Table t))
+delete k (Table kvs) = Table $ filter (\(k', v) -> k /= k') kvs
 
 -- Task Tables-4.
 --
